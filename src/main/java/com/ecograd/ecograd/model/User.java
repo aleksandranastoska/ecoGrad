@@ -8,9 +8,9 @@ import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 
 @Data
 @Entity(name="app_users")
@@ -21,7 +21,7 @@ public class User implements UserDetails {
     private String name;
     private String surname;
     private String email;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private Integer points;
 
     private boolean isAccountNonExpired = true;
@@ -31,6 +31,10 @@ public class User implements UserDetails {
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
+
+    public User() {
+
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
