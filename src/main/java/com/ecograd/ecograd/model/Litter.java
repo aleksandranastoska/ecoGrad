@@ -17,6 +17,8 @@ public class Litter {
     private double latitude;
     private LitterType litterType;
     private LitterSeverity litterSeverity;
+    @ManyToOne
+    private Region region;
     @Lob
     @Column(name="picture")
     private byte[] imageData;
@@ -25,13 +27,14 @@ public class Litter {
     @ManyToOne
     private User user;
 
-    public Litter(LocalDate dateReported, double longitude, double latitude, LitterType litterType, LitterSeverity litterSeverity, byte[] imageData) {
+    public Litter(LocalDate dateReported, double longitude, double latitude, LitterType litterType, LitterSeverity litterSeverity, byte[] imageData, Region region) {
         this.dateReported = dateReported;
         this.longitude = longitude;
         this.latitude = latitude;
         this.litterType = litterType;
         this.litterSeverity = litterSeverity;
         this.imageData = imageData;
+        this.region = region;
     }
 
     public Litter() {

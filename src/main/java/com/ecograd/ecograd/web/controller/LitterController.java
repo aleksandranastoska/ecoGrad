@@ -49,7 +49,7 @@ public class LitterController {
                             ){
         Double latitude = Double.parseDouble(location.split(",")[0]);
         Double longitude = Double.parseDouble(location.split(",")[1]);
-        Litter litter = new Litter(dateReported,longitude,latitude,litterType,litterSeverity,image);
+        Litter litter = new Litter(dateReported,longitude,latitude,litterType,litterSeverity,image, null);
         String currentUser = req.getRemoteUser();
         User user = userService.findByUsername(currentUser);
         litter.setUser(user);
