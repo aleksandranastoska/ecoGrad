@@ -38,6 +38,11 @@ public class LitterServiceImpl implements LitterService {
             }
         }
         litter.setRegion(region);
+        if(litter.getRegion()!=null){
+            region = litter.getRegion();
+            region.setScore(region.getScore()+litter.getScore());
+            regionRepository.save(region);
+        }
         return litterRepository.save(litter);
     }
 
