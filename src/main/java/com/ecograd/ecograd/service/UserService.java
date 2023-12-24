@@ -8,4 +8,5 @@ public interface UserService extends UserDetailsService {
     UserDetails loadUserByUsername(String username);
 
     User findByUsername(String username);
+    Double calculatePointsByUsername(String username);
 }

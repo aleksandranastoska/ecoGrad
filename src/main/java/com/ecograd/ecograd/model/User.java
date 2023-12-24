@@ -22,7 +22,7 @@ public class User implements UserDetails {
     private String surname;
     private String email;
     private LocalDate dateOfBirth;
-    private Integer points;
+    private Double points;
 
     private boolean isAccountNonExpired = true;
     private boolean isAccountNonLocked = true;
@@ -36,7 +36,7 @@ public class User implements UserDetails {
 
     }
 
-    public User(String username, String password, String name, String surname, String email, LocalDate dateOfBirth, Integer points, Role role) {
+    public User(String username, String password, String name, String surname, String email, LocalDate dateOfBirth, Double points, Role role) {
         this.username = username;
         this.password = password;
         this.name = name;

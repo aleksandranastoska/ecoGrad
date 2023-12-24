@@ -22,6 +22,8 @@ public class Litter {
     private byte[] imageData;
     @Transient
     private Double score;
+    @ManyToOne
+    private User user;
 
     public Litter(LocalDate dateReported, double longitude, double latitude, LitterType litterType, LitterSeverity litterSeverity, byte[] imageData) {
         this.dateReported = dateReported;
