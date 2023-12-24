@@ -20,7 +20,7 @@ public class LitterController {
         this.litterService = litterService;
     }
 
-    @GetMapping("/home")
+    @GetMapping({"/home", "/"})
     public String getHomePage(Model model){
         model.addAttribute("litters",litterService.findAll());
         return "home-page";

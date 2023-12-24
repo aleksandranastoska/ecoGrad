@@ -21,7 +21,7 @@ public class DataHolder {
 
     @PostConstruct
     public void init() {
-        User user = new User("kostova", passwordEncoder.encode("tamara123"), "Tamara", "Kostova", "kostovatamara@gmail.com", LocalDate.now(), 0, Role.USER);
+        User user = new User("kostova", passwordEncoder.encode("tamara123"), "Tamara", "Kostova", "kostovatamara@gmail.com", LocalDate.now(), 0d, Role.USER);
         userRepository.save(user);
     }
 
