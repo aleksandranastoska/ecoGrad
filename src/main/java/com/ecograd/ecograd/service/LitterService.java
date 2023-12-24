@@ -10,5 +10,5 @@ public interface LitterService {
     Litter addLitter(Litter litter);
 
     Litter findById(Long id);
-    Double calculateScoreById(Long id);
+    List<Litter> findByUserUsername(String username);
 }

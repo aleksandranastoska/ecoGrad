@@ -20,7 +20,6 @@ public class Litter {
     @Lob
     @Column(name="picture")
     private byte[] imageData;
-    @Transient
     private Double score;
     @ManyToOne
     private User user;
@@ -32,6 +31,22 @@ public class Litter {
         this.litterType = litterType;
         this.litterSeverity = litterSeverity;
         this.imageData = imageData;
+        double score = 1d;
+        if (litterSeverity.equals(LitterSeverity.SEVERE))
+            score+=3;
+        else if (litterSeverity.equals(LitterSeverity.MEDIUM))
+            score+=2;
+        else if (litterSeverity.equals(LitterSeverity.SMALL))
+            score+=1;
+        if (litterType.equals(LitterType.PLASTIC))
+            score+=5;
+        else if (litterType.equals(LitterType.GLASS))
+            score+=4;
+        else if (litterType.equals(LitterType.OTHER))
+            score+=3;
+        else if (litterType.equals(LitterType.PAPER))
+            score+=2;
+        this.score = score;
     }
 
     public Litter() {

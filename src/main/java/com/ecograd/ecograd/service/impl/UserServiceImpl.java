@@ -35,19 +35,16 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username).orElseThrow(()->new InvalidUsernameException(username));
     }
-
-    @Override
-    public Double calculatePointsByUsername(String username) {
-        User user = userRepository.findByUsername(username).orElseThrow(()->new InvalidUsernameException(username));
-        Double points = litterRepository.findByUserUsername(username).stream().mapToDouble(Litter::getScore).sum();
-        user.setPoints(points);
-        return points;
-    }
     @Override
     public User register(String username, String password, String name, String surname, String email, LocalDate dateOfBirth, Integer points, Role role) {
         User user = new User(username, passwordEncoder.encode(password), name, surname, email, dateOfBirth, 0d, role);
         return userRepository.save(user);
     }
 
-
+    @Override
+    public User addPointsToUser(Double points, String username) {
+        User user = userRepository.findByUsername(username).orElseThrow(()->new InvalidUsernameException(username));
+        user.setPoints(user.getPoints()+points);
+        return userRepository.save(user);
+    }
 }

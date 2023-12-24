@@ -13,5 +13,5 @@ public interface UserService extends UserDetailsService {
     User register(String username, String password, String name, String surname, String email, LocalDate dateOfBirth, Integer points, Role role);
 
     User findByUsername(String username);
-    Double calculatePointsByUsername(String username);
+    User addPointsToUser(Double points, String username);
 }

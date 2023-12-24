@@ -9,6 +9,7 @@ import com.ecograd.ecograd.service.LitterService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class LitterServiceImpl implements LitterService {
@@ -34,25 +35,7 @@ public class LitterServiceImpl implements LitterService {
     }
 
     @Override
-    public Double calculateScoreById(Long id) {
-        Litter litter = litterRepository.findById(id).orElseThrow(InvalidLitterException::new);
-        double score = 1d;
-        if (litter.getLitterSeverity().equals(LitterSeverity.SEVERE))
-            score+=3;
-        else if (litter.getLitterSeverity().equals(LitterSeverity.MEDIUM))
-            score+=2;
-        else if (litter.getLitterSeverity().equals(LitterSeverity.SMALL))
-            score+=1;
-        if (litter.getLitterType().equals(LitterType.PLASTIC))
-            score+=5;
-        else if (litter.getLitterType().equals(LitterType.GLASS))
-            score+=4;
-        else if (litter.getLitterType().equals(LitterType.OTHER))
-            score+=3;
-        else if (litter.getLitterType().equals(LitterType.PAPER))
-            score+=2;
-        litter.setScore(score);
-        litterRepository.save(litter);
-        return score;
+    public List<Litter> findByUserUsername(String username) {
+        return litterRepository.findAll().stream().filter(litter -> litter.getUser().getUsername().equals(username)).collect(Collectors.toList());
     }
 }
