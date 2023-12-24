@@ -93,7 +93,7 @@ public class WebSecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth->{
-                    auth.requestMatchers("/","/home", "/register/**", "/login", "/litters").permitAll();
+                    auth.requestMatchers("/","/home", "/register/**", "/login", "/litters","/polygons").permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .oauth2Login(Customizer.withDefaults())

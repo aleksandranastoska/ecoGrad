@@ -16,7 +16,6 @@ public class Region {
     @OneToMany
     List<Point> points = new ArrayList<>();
 
-    @Transient
     private Double score;
     private String name;
     public Region(){}
