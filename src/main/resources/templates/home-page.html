@@ -62,6 +62,7 @@
                 maxZoom: 19,
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
+            var poly_name={"Karposh 1 i 2, Debar Maalo":0,"Karposh 3 i 4, Taftalidze 1 i 2":1,"Centar hexagon":2,"Aerodrom 2(Jane)":3,"Aerodrom 1":4,"Lisice":5,"Vlae i Hrom":6,"Gjorce":7,"Kozle,Kapistec":8,"Kisela Voda":9,"butel":10,"zelezara i avtokomanda":11,"Vlada,Park":12,"Charshija":13}
             var polygons = [L.polygon([
                 //Karposh 1 i 2, Debar Maalo
                 [42.00557,21.41743],
@@ -78,7 +79,7 @@
                     [42.00116,21.37737],
                     [41.99645,21.40343]],{color:'green'}).addTo(map),
                 L.polygon([
-                    //Centara hexagon
+                    //Centar hexagon
                     [41.99347,21.42483],
                     [41.99809,21.42550],
                     [42.00026,21.42739],
@@ -93,7 +94,7 @@
                     [41.99093,21.47412],
                     [41.98782,21.48717],
                     [41.97945,21.47870],
-                    [41.98987,21.45757]],{color:'yellow'}).addTo(map),
+                    [41.98987,21.45757]],{color:'3'}).addTo(map),
                 L.polygon([
                     //Aerodrom 1
                     [41.98256,21.47188],
@@ -185,17 +186,46 @@
                     [42.00579,21.42862],
                 ],{color:'pink'}).addTo(map),
                 L.polygon([
-                    [41.99857,21.45118],
-                    [41.99579,21.45019],
-                    [41.99651,21.44597],
-                    [41.99568,21.44121],
-                    [41.99930,21.43203],
-                    [42.01224,21.42150],
-                ],{color:'green'}).addTo(map)
+                    [41.99647,21.44999],
+                    [41.99829,21.44455],
+                    [41.99871,21.43994],
+                    [41.99921,21.43208],
+                    [42.00724,21.42904],
+                    [42.01219,21.42406],
+                    [42.00876,21.43327],
+                    [42.00504,21.44083],
+                    [41.99890,21.45073]
+                ],{color:'red'}).addTo(map)
             ];
-            map.on('click', function(e) {
-                alert(e.latlng);
-            });
+
+            // polygons[poly_name["Karposh 1 i 2, Debar Maalo"]].setStyle({color:'pink'});
+
+            let drawPolygons = {};
+            fetch('/polygons')
+                .then(response => response.json())
+                .then(data => {
+                    drawPolygons = data;
+                    console.log(drawPolygons);
+
+                    for(var i=0;i<drawPolygons.length;i++){
+                        var name = drawPolygons[i].split(";")[0]
+                        var color = drawPolygons[i].split(";")[1]
+
+
+                        polygons[poly_name[name]].setStyle({color:color});
+                    }
+
+                    // for (let el in data) {
+                    //     console.log(el.split(";"));
+                    //     console.log("/n");
+                    //     // var color = data[key]
+                    //     // polygons[poly_name[key]].setStyle({color:color});
+                    //     // console.log(color)
+                    // }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
 
             let mapMarkers = {};
             fetch('/litters') // Replace with your endpoint URL
@@ -203,10 +233,11 @@
                 .then(data => {
                     mapMarkers = data;
 
+
                     for (let key in data) {
                         const litter = data[key]
                         let marker = L.marker([litter.latitude, litter.longitude], {}).addTo(map);
-                        marker.bindPopup(`<strong>${litter.id}</strong><br>`);
+                        marker.bindPopup('<img th:src="@{\'data:image/jpg;base64,\' + ${litter.encodeChartImage(litter.imageData)}}"/>');
                     }
                 })
                 .catch(error => {

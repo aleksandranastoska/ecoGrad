@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.Base64;
+
 import jakarta.persistence.Lob;
 
 @Data
@@ -20,7 +22,7 @@ public class Litter {
     @ManyToOne
     private Region region;
     @Lob
-    @Column(name="picture")
+    @Column(name = "picture")
     private byte[] imageData;
     private Double score;
     @ManyToOne
@@ -52,5 +54,9 @@ public class Litter {
     }
 
     public Litter() {
+    }
+
+    public static String encodeChartImage(byte[] chartImage) {
+        return new String(Base64.getEncoder().encode(chartImage));
     }
 }

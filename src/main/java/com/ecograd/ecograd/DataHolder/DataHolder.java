@@ -52,7 +52,7 @@ public class DataHolder {
             points.add(p);
         }
         if (regionRepository.count()==0) {
-            regionRepository.save(new Region(points, 0.0, "Karposh 1 i 2 i Debar Maalo"));
+            regionRepository.save(new Region(points, 0.0, "Karposh 1 i 2, Debar Maalo"));
             poly = Arrays.asList(
                     42.00698, 21.40605,
                     42.01005, 21.38216,
@@ -65,7 +65,7 @@ public class DataHolder {
                 pointRepository.save(p);
                 points.add(p);
             }
-            regionRepository.save(new Region(points, 0.0, "Karposh 3,4 taftalisze 1,2"));
+            regionRepository.save(new Region(points, 0.0, "Karposh 3 i 4, Taftalidze 1 i 2"));
             poly = Arrays.asList(
                     41.99354, 21.46232,
                     41.99432, 21.46551,
@@ -80,7 +80,7 @@ public class DataHolder {
                 pointRepository.save(p);
                 points.add(p);
             }
-            regionRepository.save(new Region(points, 0.0, "Aerodrom 2"));
+            regionRepository.save(new Region(points, 0.0, "Aerodrom 2(Jane)"));
             poly = Arrays.asList(
                     41.99347, 21.42483,
                     41.99809, 21.42550,
@@ -96,7 +96,7 @@ public class DataHolder {
                 pointRepository.save(p);
                 points.add(p);
             }
-            regionRepository.save(new Region(points, 0.0, "Centar"));
+            regionRepository.save(new Region(points, 0.0, "Centar hexagon"));
             poly = Arrays.asList(
                     41.98256, 21.47188,
                     41.97710, 21.46461,
@@ -129,7 +129,7 @@ public class DataHolder {
                 pointRepository.save(p);
                 points.add(p);
             }
-            regionRepository.save(new Region(points, 0.0, "Lisiche"));
+            regionRepository.save(new Region(points, 0.0, "Lisice"));
             poly = Arrays.asList(
                     42.00134, 21.37741,
                     41.99734, 21.37021,
@@ -161,7 +161,7 @@ public class DataHolder {
                 pointRepository.save(p);
                 points.add(p);
             }
-            regionRepository.save(new Region(points, 0.0, "Djorche"));
+            regionRepository.save(new Region(points, 0.0, "Gjorce"));
             poly = Arrays.asList(
                     41.99317, 21.42441,
                     42.00101, 21.37702,
@@ -175,7 +175,7 @@ public class DataHolder {
                 pointRepository.save(p);
                 points.add(p);
             }
-            regionRepository.save(new Region(points, 0.0, "Kozle Kapishtec"));
+            regionRepository.save(new Region(points, 0.0, "Kozle,Kapistec"));
             poly = Arrays.asList(
                     41.97713, 21.46439,
                     41.97192, 21.46006,
@@ -209,7 +209,7 @@ public class DataHolder {
                 pointRepository.save(p);
                 points.add(p);
             }
-            regionRepository.save(new Region(points, 0.0, "Butel"));
+            regionRepository.save(new Region(points, 0.0, "butel"));
             poly = Arrays.asList(
                     42.00524, 21.44184,
                     42.02443, 21.45110,
@@ -223,7 +223,7 @@ public class DataHolder {
                 pointRepository.save(p);
                 points.add(p);
             }
-            regionRepository.save(new Region(points, 0.0, "Zelezara i Avto Komonda"));
+            regionRepository.save(new Region(points, 0.0, "zelezara i avtokomanda"));
             poly = Arrays.asList(
                     41.99912, 21.43003,
                     42.00537, 21.41724,
@@ -244,7 +244,7 @@ public class DataHolder {
                 points.add(p);
             }
 
-            regionRepository.save(new Region(points, 0.0, "Vlada i Park"));
+            regionRepository.save(new Region(points, 0.0, "Vlada,Park"));
             poly = Arrays.asList(
                     41.99647, 21.44999,
                     41.99829, 21.44455,
