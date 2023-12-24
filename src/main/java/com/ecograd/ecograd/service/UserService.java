@@ -1,5 +1,6 @@
 package com.ecograd.ecograd.service;
 
+import com.ecograd.ecograd.model.Role;
 import com.ecograd.ecograd.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
