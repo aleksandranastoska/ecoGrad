@@ -34,6 +34,21 @@ public class Litter {
         this.litterSeverity = litterSeverity;
         this.imageData = imageData;
         this.region = region;
+        score = 0d;
+        if (litterType.equals(LitterType.PLASTIC))
+            score+=5;
+        else if (litterType.equals(LitterType.OTHER))
+            score+=4;
+        if (litterType.equals(LitterType.GLASS))
+            score+=3;
+        if (litterType.equals(LitterType.PAPER))
+            score+=2;
+        if (litterSeverity.equals(LitterSeverity.SEVERE))
+            score+=5;
+        else if (litterSeverity.equals(LitterSeverity.MEDIUM))
+            score+=4;
+        if (litterSeverity.equals(LitterSeverity.SMALL))
+            score+=3;
     }
 
     public Litter() {
