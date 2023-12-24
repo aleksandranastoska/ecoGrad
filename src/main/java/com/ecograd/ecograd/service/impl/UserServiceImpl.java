@@ -8,16 +8,21 @@ import com.ecograd.ecograd.repository.UserRepository;
 import com.ecograd.ecograd.service.UserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final LitterRepository litterRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public UserServiceImpl(UserRepository userRepository, LitterRepository litterRepository) {
+
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.litterRepository = litterRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -37,4 +42,11 @@ public class UserServiceImpl implements UserService {
         user.setPoints(points);
         return points;
     }
+    @Override
+    public User register(String username, String password, String name, String surname, String email, LocalDate dateOfBirth, Integer points, Role role) {
+        User user = new User(username, passwordEncoder.encode(password), name, surname, email, dateOfBirth, 0, role);
+        return userRepository.save(user);
+    }
+
+
 }
