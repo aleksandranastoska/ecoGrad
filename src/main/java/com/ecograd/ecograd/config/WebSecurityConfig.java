@@ -92,7 +92,7 @@ public class WebSecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         return http.authorizeRequests(auth->{
                     auth.requestMatchers("/","/home", "/register/**", "/login").permitAll();
-                    auth.anyRequest().authenticated();
+                    auth.anyRequest().permitAll();
                 })
                 .oauth2Login(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults())
