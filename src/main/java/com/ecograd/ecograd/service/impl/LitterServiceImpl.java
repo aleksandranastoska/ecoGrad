@@ -50,6 +50,12 @@ public class LitterServiceImpl implements LitterService {
     public List<Litter> findByUserUsername(String username) {
         return litterRepository.findAll().stream().filter(litter -> litter.getUser().getUsername().equals(username)).collect(Collectors.toList());
     }
+
+    @Override
+    public List<Litter> findAllByRegion(Region r) {
+        return litterRepository.findAllByRegion(r);
+    }
+
     public static class Line {
         public Point p1, p2;
         public Line(Point p1, Point p2)

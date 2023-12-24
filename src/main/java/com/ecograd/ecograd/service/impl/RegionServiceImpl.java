@@ -5,6 +5,8 @@ import com.ecograd.ecograd.repository.RegionRepository;
 import com.ecograd.ecograd.service.RegionService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RegionServiceImpl implements RegionService {
     private final RegionRepository regionRepository;
@@ -15,5 +17,10 @@ public class RegionServiceImpl implements RegionService {
 
     public Region save(Region r){
         return regionRepository.save(r);
+    }
+
+    @Override
+    public List<Region> findAll() {
+        return regionRepository.findAll();
     }
 }
