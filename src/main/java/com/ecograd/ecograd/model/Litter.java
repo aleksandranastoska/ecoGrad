@@ -3,9 +3,8 @@ package com.ecograd.ecograd.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 import jakarta.persistence.Lob;
-import org.hibernate.annotations.Type;
 
 @Data
 @Entity
@@ -13,7 +12,7 @@ public class Litter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date dateReported;
+    private LocalDate dateReported;
     private double longitude;
     private double latitude;
     private LitterType litterType;
@@ -23,4 +22,16 @@ public class Litter {
     private byte[] imageData;
     @Transient
     private Double score;
+
+    public Litter(LocalDate dateReported, double longitude, double latitude, LitterType litterType, LitterSeverity litterSeverity, byte[] imageData) {
+        this.dateReported = dateReported;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.litterType = litterType;
+        this.litterSeverity = litterSeverity;
+        this.imageData = imageData;
+    }
+
+    public Litter() {
+    }
 }
